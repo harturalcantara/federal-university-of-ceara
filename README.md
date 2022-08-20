@@ -1,1 +1,15 @@
-# All my files of university.
+# All my university files.
+
+#### [pt-br]
+UNIVERSIDADE FEDERAL DO CEARÁ
+
+Semestre 1
+  - INTRODUÇÃO À CIÊNCIA DA COMPUTAÇÃO
+  - FUNDAMENTOS DE PROGRAMAÇÃO
+  - ARQUITETURA DE COMPUTADORES
+  - MATEMÁTICA BÁSICA
+  - ÉTICA, DIREITO E LEGISLAÇÃO
+  - PRÉ-CÁLCULO
+
+Semestre 2
+  - ...
