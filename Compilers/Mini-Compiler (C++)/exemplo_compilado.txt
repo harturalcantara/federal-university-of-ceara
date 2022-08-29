@@ -1,0 +1,19 @@
+0001: INT MAIN
+ INT I1 , I2 , I3
+ INT I4 , I5 , I6
+ FLOAT R1 , R2 , R3 , R4
+ CHAR CP
+0006: TMP#1 = 1.0 + R1
+0007: R2 = TMP#1
+0008: TMP#2 = R1 != 20.0
+0009: Não Faça Para está Variavel TMP#2 O GOTO
+ INT I1 15
+0011: TMP#3 = R3 + 1.0
+0012: TMP#4 = R3 - R1
+0013: TMP#5 = TMP#3 + TMP#4
+0014: R2 = TMP#5
+0015: TMP#6 = R1 != 20.0
+0016: Não Faça Para está Variavel TMP#6 O GOTO
+ INT I1 20
+0018: TMP#7 = R3 - 1.0
+0019: R2 = TMP#7

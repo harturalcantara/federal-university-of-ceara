@@ -1,0 +1,44 @@
+int  main () {
+
+    int i1, i2, i3;
+    int i4, i5, i6;
+    float r1, r2, r3, r4;
+    char cp;
+   
+     
+     printf (  );
+        
+        
+        	R2 = 1 + r1;
+     
+                 if(r1 != 20)
+                {   
+                int i1;
+                
+                
+                
+            	printf ( );        
+                
+               		
+                    R2 = (r3 + 1) + (r3 - r1);
+                   
+                    /*meu*/
+                 
+                   
+                  
+                    
+                }
+                if(r1 != 20) 
+                {
+                int i1;
+                printf ( );
+                    R2 = r3 - 1;
+                    
+                }
+               
+                
+               
+                
+                
+                
+}
