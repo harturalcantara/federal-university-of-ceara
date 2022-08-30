@@ -12,6 +12,7 @@ Semester 1
    - PRE-CALCULATION
 
 Semester 2
+   - STRUCT DATA
    - 
 
 #### [pt-br]
