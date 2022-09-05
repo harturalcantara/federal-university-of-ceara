@@ -1,0 +1,5 @@
+interface Tributavel{
+
+    double calcularTributos();
+
+}

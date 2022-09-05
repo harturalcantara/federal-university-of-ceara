@@ -1,0 +1,4 @@
+Livio Freire;Crateus-CE;1010;1111;10000.0;
+Lilian Carneiro;Crateus-CE;1212;1313;10000.0;
+Felipe Fernandes;Crateus-CE;1414;1515;10000.0;
+Roberto Cabral;Crateus-CE;1616;1717;10000.0;

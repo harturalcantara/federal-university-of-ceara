@@ -1,0 +1,4 @@
+interface Comercio{
+
+	void imprimir();
+}
