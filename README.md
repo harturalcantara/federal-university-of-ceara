@@ -1,30 +1,37 @@
-# All my university files.
+# federal-university-of-ceara
 
-#### [en-us]
-FEDERAL UNIVERSITY OF CEARA
+#### [english]
+All my university files from Federal University of Ceara.
 
 Semester 1
-   - INTRODUCTION TO COMPUTER SCIENCE
-   - PROGRAMMING FUNDAMENTALS
-   - COMPUTERS ARCHITECTURE
-   - BASIC MATHEMATICS
-   - ETHICS, LAW AND LEGISLATION
-   - PRE-CALCULATION
+   - Introduction to Computer Science
+   - Programming Fundamentals
+   - Computers Architecture
+   - Basic Mathematics
+   - Ethics, Law and Legislation
+   - Pre-Calculation
 
 Semester 2
-   - STRUCT DATA
-   - 
+   - Struct Data
+   - Calculus 1
+   - Operational systems
+   - Object Oriented Programming
+   - Discrete Mathematics
 
-#### [pt-br]
-UNIVERSIDADE FEDERAL DO CEARÁ
+Semester 3
+   - ...
 
-Semestre 1
-  - INTRODUÇÃO À CIÊNCIA DA COMPUTAÇÃO
-  - FUNDAMENTOS DE PROGRAMAÇÃO
-  - ARQUITETURA DE COMPUTADORES
-  - MATEMÁTICA BÁSICA
-  - ÉTICA, DIREITO E LEGISLAÇÃO
-  - PRÉ-CÁLCULO
+Semester 4
+   - ...
 
-Semestre 2
-  - ...
+Semester 5
+   - ...
+
+Semester 6
+   - ...
+
+Semester 7
+   - ...
+
+Semester 8
+   - ...
