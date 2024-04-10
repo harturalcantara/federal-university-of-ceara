@@ -1,0 +1,212 @@
+-- INSERT SCRIPT - TRABALHO 2 FBD 2018.2 
+-- HARTUR ALCANTARA - CC
+
+SELECT id, nome, cidade
+	FROM bd_trab2."Cliente";
+
+
+-- QUESTAO 1) (OKAY)
+SELECT Cli.nome
+FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con, bd_trab2."Transacao" Trans
+WHERE Cli.id = Con.id_cliente and Con.id = Trans.id_conta and Trans.valor > ALL
+	  (SELECT Trans.valor
+	   FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con, bd_trab2."Transacao" Trans
+	   WHERE Cli.nome = 'Claudio' and Cli.id = Con.id_cliente and Con.id = Trans.id_conta)
+
+
+-- QUESTAO 2) 
+--Altere a conta 2980 para o cliente 1070. Depois, consulte os nomes dos clientes 
+--que não possuem nenhuma conta (Dica: use EXISTS)  
+
+UPDATE bd_trab2."Conta"
+SET id_cliente = 1070
+WHERE id = 2980
+			
+--UPDATE bd_trab2."Conta" --processo inverso, para voltar ao normal.
+--SET id = 2980 
+--WHERE id = 1080
+
+SELECT DISTINCT Cli.nome
+FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con
+WHERE Con.id_cliente = Cli.id and EXISTS 
+			(SELECT DISTINCT Cli.id, Cli.nome
+			 FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con
+			 WHERE Con.id_cliente = Cli.id)
+
+-- Q3) Consulte   o   nome   dos   clientes   cadastrados   nas   mesmas   agências   onde 
+-- a funcionária "Joana" está cadastrada. (Dica: Use EXISTS ou EXCEPT) 
+SELECT DISTINCT Cli.nome
+FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con,  bd_trab2."Agencia" Age, bd_trab2."Funcionario" Func
+WHERE Cli.id = Con.id_cliente and Con.id_agencia = Age.id and Func.id_agencia = Age.id and Func.nome = 'Joana' and EXISTS
+			(SELECT Cli.nome
+			 FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con,  bd_trab2."Agencia" Age, bd_trab2."Funcionario" Func
+			 WHERE Cli.id = Con.id_cliente and Con.id_agencia = Age.id and Func.id_agencia = Age.id and Func.nome = 'Joana')
+
+
+
+
+
+
+
+-- Q4) Consulte  o  nome  dos  clientes  cadastrados  nas  mesmas  agências  onde
+-- o  cliente "Claudio" está cadastrada. (Dica: Use EXISTS ou EXCEPT)
+SELECT DISTINCT Cli.nome
+FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con,  bd_trab2."Agencia" Age, bd_trab2."Funcionario" Func
+WHERE Cli.id = Con.id_cliente and Con.id_agencia = Age.id and Func.id_agencia = Age.id and Func.nome = 'Joana' and EXISTS
+			(SELECT Cli.nome
+			 FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con,  bd_trab2."Agencia" Age, bd_trab2."Funcionario" Func
+			 WHERE Cli.id = Con.id_cliente and Con.id_agencia = Age.id and Func.id_agencia = Age.id and Func.nome = 'Joana') 
+  
+  
+  
+  
+-- Q5) Consulte  o  Código  dos  clientes  cadastrados  nas  agências  de  número  1, 
+-- 2  ou  3  (Dica: use conjunto como constante)  (OK)
+SELECT DISTINCT Cli.id
+FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con,  bd_trab2."Agencia" Age
+WHERE Cli.id = Con.id_cliente and Con.id_agencia = Age.id and Age.id IN ('1','2','3') and EXISTS
+			(SELECT Cli.nome
+			 FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con,  bd_trab2."Agencia" Age
+			 WHERE Cli.id = Con.id_cliente and Con.id_agencia = Age.id and Age.id IN ('1','2','3'))
+																			
+																			
+																																						
+--Q6) Consulte  o  número  das  agências  que  possuem  pelo  menos  uma  conta  que  não 
+--tem transação. (OK)
+																					  
+SELECT DISTINCT Age.id
+FROM bd_trab2."Agencia" Age,																	  
+		(SELECT DISTINCT Cli.nome, Age.id
+		 FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con, bd_trab2."Agencia" Age
+		 WHERE Cli.id = Con.id_cliente and Con.id_agencia = Age.id
+			EXCEPT ALL
+		(SELECT DISTINCT   Cli.nome, Age.id
+		 FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con,  bd_trab2."Agencia" Age, bd_trab2."Transacao" Trans
+		 WHERE Cli.id = Con.id_cliente and Con.id_agencia = Age.id and Con.id = Trans.id_conta)) tab1		 
+WHERE tab1.id = Age.id																			
+
+		 
+		 
+-- 7. Consulte o Código dos clientes com saldo maior que o saldo do cliente de 
+-- maior saldo das agências de Fortaleza. (OK)		 
+SELECT max(Con.saldo)		 
+FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con,  bd_trab2."Agencia" Age
+where Cli.id = Con.id_cliente and Con.saldo > ALL 
+		 	(SELECT max(Con.saldo)
+			FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con,  bd_trab2."Agencia" Age
+			WHERE Cli.id = Con.id_cliente and Con.id_agencia = Age.id and Age.cidade = 'Fortaleza')		 
+	
+		 
+-- 8. Consulte  do  nome  do  cliente,  o  número  das  contas,  o  saldo,  os  valores
+-- das transações  e  as  datas  das  transações  de  todos  os  clientes  das  agências  de 
+-- Fortaleza. Use JOIN.  ()
+SELECT Cli.nome, Con.id, Con.saldo, Trans.valor, Trans.data_realizacao 
+FROM bd_trab2."Cliente" Cli JOIN bd_trab2."Conta" Con  on (Cli.id = Con.id_cliente) JOIN bd_trab2."Agencia" Age on (Con.id_agencia = Age.id and Age.cidade = 'Fortaleza')
+		 JOIN bd_trab2."Transacao" Trans on (Con.id = Trans.id_conta)
+
+		 
+		 		 
+-- 9. Consulte  os  nome  dos  funcionários  que  trabalham  em  agência  que  possuem 
+-- algum cliente com o mesmo nome daquele funcionário. (OK) 		 
+SELECT Func.nome
+FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con, bd_trab2."Agencia" Age, bd_trab2."Funcionario" Func
+WHERE Cli.id = Con.id_cliente and Con.id_agencia = Age.id and Age.id = Func.id_agencia and Func.nome = Cli.nome
+		 
+		 		 
+--10. Consulte o código, o nome, e o número da contas de TODOS os clientes. 
+--Caso o cliente não possua conta, o número da conta deve apresentar o valor NULL.  
+SELECT Cli.id, Cli.nome, Con.id
+FROM bd_trab2."Cliente" Cli FULL OUTER JOIN bd_trab2."Conta" Con ON (Cli.id = Con.id_cliente) 																				  
+																					  																					  
+--11. Consulte a soma e a média dos valores das transações do cliente "Claudio"  (OK)
+SELECT sum(Trans.valor), avg(Trans.valor)
+FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con, bd_trab2."Transacao" Trans
+WHERE Cli.nome = 'Claudio' and Cli.id = Con.id_cliente and Con.id = Trans.id_conta
+		 
+		 
+		 
+--12.Consulte a quantidade de contas que o cliente "Claudio" possui na agência 1  
+SELECT count(Con.id)
+FROM bd_trab2."Cliente" Cli, bd_trab2."Conta" Con, bd_trab2."Agencia" Age
+WHERE Cli.nome = 'Claudio' and Cli.id = Con.id_cliente and Con.id_agencia = Age.id and Age.id = '1'
+		 
+--------------------------------------	 
+-- 13. Consulte  o  número  das  agências  que  possuem  mais  de  2  clientes  cadastrados 
+-- (Dica: use COUNT na consulta interna) (OKAY)
+		 
+SELECT Con.id_agencia, count(*)
+FROM bd_trab2."Cliente" Cli JOIN bd_trab2."Conta" Con ON (Cli.id = Con.id_cliente)
+GROUP BY Con.id_agencia 
+HAVING count(*) >2
+ORDER BY Con.id_agencia
+		 				 
+-- 14) Consulte o número da conta e a quantidade de transações para cada conta (Dica: use GROUP BY) (OKAY)
+SELECT Con.id, count(*)
+FROM bd_trab2."Transacao" Trans JOIN bd_trab2."Conta" Con ON (Con.id = Trans.id_conta)
+GROUP BY Con.id	 
+ORDER BY Con.id	 
+			 
+-- 15. Consulte o número, a cidade, a média, o menor salário, o maior salário e a soma dos salários de cada agência. (OKAY)
+SELECT Age.id, Age.cidade, avg(Func.salario), min(Func.salario), max(Func.salario), sum(Func.salario)
+FROM bd_trab2."Funcionario" Func JOIN bd_trab2."Agencia" Age ON (Age.id = Func.id_agencia)
+GROUP BY Age.id	 
+ORDER BY Age.id	 
+		 	 
+-- 16. Consulte a quantidade de contas que não possuem transação. (OKAY)
+SELECT count(Con.id)
+FROM bd_trab2."Conta" Con
+WHERE Con.id not in(SELECT Con.id	 
+			 FROM bd_trab2."Conta" Con JOIN bd_trab2."Transacao" Trans ON (Con.id = Trans.id_conta)
+			 GROUP BY Con.id)
+		 
+-- 17.Consulte  o  número  e  a  cidade  das  agências  com  média  salarial maior  que  a  média salarial da agência da cidade de Sobral. (OKAY) 
+SELECT Age.id, Age.cidade		 
+FROM bd_trab2."Funcionario" Func JOIN bd_trab2."Agencia" Age ON (Age.id = Func.id_agencia)
+GROUP BY Age.id 	 
+HAVING avg(Func.salario) >
+						 (SELECT avg(Func.salario)
+						  FROM bd_trab2."Funcionario" Func JOIN bd_trab2."Agencia" Age ON (Age.id = Func.id_agencia)
+						  WHERE Age.cidade = 'Sobral')		 
+ORDER BY Age.id	
+		 		 
+--18. Consulte o número da agência, a cidade, e a quantidade de contas para todas as 
+--agências com mais 2 contas (Dica: use GROUP BY e HAVING) (OKAY)
+SELECT Con.id_agencia, count(*)
+FROM bd_trab2."Cliente" Cli JOIN bd_trab2."Conta" Con ON (Cli.id = Con.id_cliente) JOIN  bd_trab2."Agencia" Age ON (Age.id = Con.id_agencia) 
+GROUP BY Con.id_agencia 
+HAVING count(*) > 2
+ORDER BY Con.id_agencia
+		 		 
+--19. Consulte o número das contas e a quantidade de transações com valor 
+--acima de 200 das contas com mais 2 transações (Dica: precisa de consulta 
+--interna.
+		 
+SELECT Con.id, count(Con.id)	 
+FROM bd_trab2."Conta" Con JOIN bd_trab2."Transacao" Trans ON (Con.id = Trans.id_conta and Trans.valor > 200)
+GROUP BY Con.id
+HAVING (SELECT count(*)
+	   	FROM bd_trab2."Transacao" Trans 
+	   	WHERE Con.id = Trans.id_conta) > 2
+
+		 
+
+		 
+	
+		 
+		 
+		 	
+
+
+
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 

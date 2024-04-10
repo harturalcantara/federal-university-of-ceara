@@ -1,0 +1,78 @@
+-- INSERT SCRIPT - TRABALHO 2 FBD 2018.2 
+-- HARTUR ALCANTARA - CC
+
+
+INSERT INTO bd_trab2."Agencia"(
+	id, nome, cidade)
+	VALUES 	(1 , 'BB 15 de Novembro', 'Fortaleza'),
+			(2 , 'Caixa Ipu', 'Ipu'),
+			(3 , 'BB Crateus', 'Crateus'),
+			(4 , 'BB Centro', 'Sobral'),
+			(5 , 'Caixa Juazeiro', 'Juazeiro');
+			
+INSERT INTO bd_trab2."Funcionario"(
+	id, nome, cidade, salario, id_agencia)
+	VALUES (33 , 'Joana' , 'Fortaleza' , 1200 , 1),
+			(47 , 'Claudio' , 'Crateus' , 940 , 1),
+			(29 , 'Lucas' , 'Crateus' , 4000 , 1),
+			(19 , 'Jhonson' , 'Ipu' , 7200 , 2),
+			(11 , 'Cleide' , 'NovaRussas' , 1100 , 2),
+			(13 , 'Roberto' , 'Quixada' , 1200 , 4),
+			(53 , 'Victor' , 'Russas' , 1200 , 5),
+			(31 , 'Juliana' , 'Juazeiro' , 1450 , 4),
+			(41 , 'Rafaela' , 'Fortaleza' , 2200 , 5);
+
+
+INSERT INTO bd_trab2."Cliente"( --Inserindo tuplas na tabela Cliente.
+	id , nome , cidade)
+	VALUES  (1010 , 'Claudio' , 'Sobral'),
+			(1020 , 'Matheus' , 'Ipu'),
+			(1050 , 'Lucas' , 'Fortaleza'),
+			(1110 , 'Luciana' , 'Fortaleza'),
+			(2010 , 'Francisca' , 'Ipu'),
+			(910 , 'Andrea' , 'Ipu'),
+			(1030 , 'Nestor' , 'Crateus'),
+			(1070 , 'Leonardo' , 'Sobral'),
+			(1080 , 'David' , 'Juazeiro');
+
+
+INSERT INTO bd_trab2."Conta"(
+	id , saldo , id_cliente , id_agencia)
+	VALUES  (3455 , 5000 , 1010 , 1),
+			(3456 , 51000 , 1010 , 2),
+			(2455 , 4390 , 1020 , 3),
+			(3267 , 1200 , 1050 , 1),
+			(5641 , 300 , 1110 , 2),
+			(3289 , -31 , 2010 , 5),
+			(2121 , -299 , 910 , 1),
+			(2325 , 7600 , 1030 , 4),
+			(2156 , 2500 , 1070 , 5),
+			(2980 , 2100 , 1080 , 1);
+
+
+
+
+INSERT INTO bd_trab2."Transacao"( --Inserindo tuplas na tabela Transacao.
+	num_transacao , data_realizacao , valor , id_conta)
+	VALUES  (1 , '12/03/2018' , 33 , 3455),
+			(2 , '12/03/2018' , 25 , 2455),
+			(3 , '15/03/2018' , 500 , 3267),
+			(4 , '02/01/2017' , 1200 , 5641),
+			(5 , '02/01/2010' , 300 , 3289),
+			(6 , '30/05/2007' , 50 , 2121),
+			(7 , '01/01/2000' , 500 , 2325),
+			(8 , '11/11/2011' , 600 , 3455),
+			(9 , '02/01/2010' , 2000 , 3455);
+
+
+INSERT INTO bd_trab2."Multa"( --Inserindo tuplas na tabela Multa.
+	numero_multa , data_realizacao , valor , id_conta)
+	VALUES  (1 , '12/03/2018' , 233 , 2121),
+			(2 , '12/03/2018' , 257 , 2121),
+			(3 , '28/03/2018' , 510 , 3267),
+			(4 , '13/01/2017' , 49 , 2325);
+
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTkxMjUxNzM4M119
+-->

@@ -1,0 +1,81 @@
+-- TABLES SCRIPT - TRABALHO 2 FBD 2018.2 
+-- HARTUR ALCANTARA - CC
+CREATE SCHEMA bd_trab2
+    AUTHORIZATION postgres;
+
+CREATE TABLE bd_trab2."Agencia" ( --CRIANDO A TABALA AGENCIA
+	id INT PRIMARY KEY,
+	nome TEXT,
+	cidade TEXT
+);
+
+CREATE TABLE bd_trab2."Funcionario"( 
+	id INT PRIMARY KEY,
+	nome TEXT,
+	cidade TEXT,
+	salario NUMERIC,
+	id_agencia INT
+);
+
+ALTER TABLE bd_trab2."Funcionario"
+	ADD CONSTRAINT CHE_FUNCIONARIO
+			FOREIGN KEY (id_agencia)
+			REFERENCES bd_draft15."Agencia"(id)
+			ON DELETE SET NULL
+			ON UPDATE CASCADE
+			
+CREATE TABLE bd_trab2."Conta"(
+	id INT PRIMARY KEY,
+	saldo NUMERIC,
+	id_cliente INT, --REFERENCES bd_trab2."Cliente"(id), //poderia ser desa forma tbm
+	id_agencia INT	
+);
+
+ALTER TABLE bd_draft15."Conta"
+	ADD CONSTRAINT CHE_CONTA
+			FOREIGN KEY (id_agencia)
+			REFERENCES bd_draft15."Agencia"(id)
+			ON DELETE SET NULL
+			ON UPDATE CASCADE
+
+ALTER TABLE bd_draft15."Conta"
+	ADD CONSTRAINT CHE_CONTA
+			FOREIGN KEY (id_cliente)
+			REFERENCES bd_draft15."Cliente"(id)
+			ON DELETE SET NULL
+			ON UPDATE CASCADE
+
+CREATE TABLE bd_trab2."Cliente"(
+	id INT PRIMARY KEY,
+	nome TEXT,
+	cidade TEXT
+);
+
+CREATE TABLE bd_trab2."Transacao"(
+	num_transacao INT,
+	data_realizacao TEXT,
+	valor NUMERIC,
+	id_conta INT
+);
+
+ALTER TABLE bd_draft15."Transacao"
+	ADD CONSTRAINT CHE_CONTA
+			FOREIGN KEY (id_conta)
+			REFERENCES bd_draft15."Conta"(id)
+			ON DELETE SET NULL
+			ON UPDATE CASCADE
+
+CREATE TABLE bd_trab2."Multa"(
+	numero_multa INT,
+	data_realizacao TEXT,
+	valor NUMERIC,
+	id_conta INT
+);
+
+ALTER TABLE bd_draft15."Multa"
+	ADD CONSTRAINT CHE_CONTA
+			FOREIGN KEY (id_conta)
+			REFERENCES bd_draft15."Conta"(id)
+			ON DELETE SET NULL
+			ON UPDATE CASCADE
+

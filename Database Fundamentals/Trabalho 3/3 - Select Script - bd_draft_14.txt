@@ -1,0 +1,143 @@
+-- SELECT SCRIPT - TRABALHO 3 FBD 2018.2 
+-- HARTUR ALCANTARA - CC
+
+-- 1. Crie uma view chamada empregado_info que contenha os seguintes dados: id, nome e salário do 
+-- empregado, total de horas alocadas em projetos, número de projeto onde está alocado, nome do 
+-- departamento onde trabalha e nome do seu supervisor.
+
+CREATE VIEW EMPREGADO_INFO ASS
+	SELECT Emp.id, Emp.nome, Emp.salario, Alo.numero_horas, Alo.id_projeto, Dep.id_supervisor
+	FROM bd_trab3."Empregado" Emp, bd_trab3."Alocacao" Alo, bd_trab3."Departamento" Dep
+
+DROP VIEW EMPREGADO_INFO;
+
+-- 2. Crie um trigger que aumente 5% do salário do empregado sempre que o mesmo for alocado em um 
+-- novo projeto.
+
+CREATE OR REPLACE FUNCTION empregado_aumento()
+RETURNS trigger AS $teste_trigger$
+	BEGIN
+
+	UPDATE bd_trab3."Empregado" Emp 
+	SET salario =  (salario + (salario * 0.05))
+	WHERE  Emp.id = NEW.id_empregado;
+
+	RETURN NEW;
+	END;
+$teste_trigger$ LANGUAGE plpgsql;
+
+CREATE TRIGGER log_trigger
+AFTER INSERT ON bd_trab3."Alocacao"
+FOR EACH ROW
+EXECUTE PROCEDURE empregado_aumento();
+
+DROP TRIGGER log_trigger ON bd_trab3."Alocacao";
+
+INSERT INTO bd_trab3."Alocacao"(	--teste
+	id_projeto, id_empregado, numero_horas)
+	VALUES 	(1                , 1                  , 10);
+							   
+-- 3. Crie um trigger que reduza 5% do salário do empregado sempre que o mesmo for desalocado de um projeto.
+
+CREATE OR REPLACE FUNCTION empregado_reducao()
+RETURNS trigger AS $teste_trigger$
+	BEGIN
+	
+	UPDATE bd_trab3."Empregado" Emp 
+	SET salario =  (salario - (salario * 0.05))
+	WHERE  Emp.supervisor = (SELECT DISTINCT Emp.id
+							FROM bd_trab3."Departamento" Dep JOIN bd_trab3."Empregado" Emp ON (Dep.id = Emp.depto) JOIN bd_trab3."Projeto" Proj ON (old.id_departamento = Dep.id) );					   
+	
+																	   
+	
+	
+	RETURN NEW;
+	END;
+$teste_trigger$ LANGUAGE plpgsql;
+
+CREATE TRIGGER log_trigger
+AFTER DELETE ON bd_trab3."Projeto"
+FOR EACH ROW
+EXECUTE PROCEDURE empregado_reducao();
+
+DROP TRIGGER log_trigger ON bd_trab3."Projeto";
+													  
+--4. Adicione uma coluna chamada num_empregados na tabela departamento. [OKAY]
+ALTER TABLE bd_trab3."Departamento" --inserir coluna
+ADD COLUMN num_empregados INT
+													  
+ALTER TABLE bd_trab3."Departamento" --deletar coluna
+DROP COLUMN num_empregados CASCADE
+													  
+--5. Atualize os valores da coluna num_empregados com a quantidade de empregados de cada departamento [OKAY]
+
+UPDATE bd_trab3."Departamento"
+SET num_empregados = 
+(SELECT count(*)
+FROM bd_trab3."Departamento" Dep JOIN bd_trab3."Empregado" Emp ON (Dep.id = Emp.depto)
+GROUP BY Dep.id)													  						  
+													  
+--6. Crie uma function que recebe o id do empregado e retorna seu salario total do ano. [OKAY]
+
+CREATE OR REPLACE FUNCTION salario_ano(salario NUMERIC)
+	RETURNS NUMERIC as
+$$
+DECLARE
+	resultado NUMERIC;
+BEGIN
+	resultado := 0;
+	SELECT $1 * 12 INTO resultado;
+	RETURN resultado;
+END;
+$$
+LANGUAGE 'plpgsql' 
+
+
+SELECT salario_ano(Emp.salario) --TESTA A FUNCAO
+FROM bd_trab3."Empregado" Emp
+
+-- 7. Crie uma function que recebe o id de um dependente e retorna o nome de seu responsável. [OKAY]
+
+SELECT DATEPART ( YEAR , '02/01/2004' )													  
+FROM bd_trab3."Dependente" Dep
+	WHERE Dep.id_empregado = id_depedente;												  
+													  
+CREATE OR REPLACE FUNCTION responsavel(id_depedente INT)
+	RETURNS TEXT as
+$$
+DECLARE
+	resultado TEXT;
+BEGIN
+	resultado := '';
+	SELECT Dep.nome INTO resultado
+	FROM bd_trab3."Dependente" Dep
+	WHERE Dep.id_empregado = id_depedente;
+	RETURN resultado;
+END;
+$$
+LANGUAGE 'plpgsql' 
+
+SELECT responsavel(Dep.id_empregado) --TESTA A FUNCAO
+FROM bd_trab3."Dependente" Dep, bd_trab3."Empregado" Emp
+WHERE Dep.id_empregado = Emp.id
+
+-- 8. Crie uma function que recebe o id de um dependente e retorna sua idade.
+
+SELECT extract(year from age(Dep.data_nascimento)) --idade de todos
+FROM bd_trab3."Dependente" Dep						   
+							   
+							   
+CREATE OR REPLACE FUNCTION idade_depedente(id_depedente INT)
+	RETURNS DATE as
+$$
+DECLARE
+	resultado DATE;
+BEGIN
+	resultado := '';
+	SELECT extract(year from age(Dep.data_nascimento)) INTO resultado
+	FROM bd_trab3."Dependente" Dep
+	WHERE Dep.id_empregado = id_depedente;
+	RETURN resultado;
+END;
+$$
+LANGUAGE 'plpgsql' 

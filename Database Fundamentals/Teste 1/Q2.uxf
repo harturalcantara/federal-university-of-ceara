@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>300</y>
+      <w>210</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Universidade
+--
++ nome: String
++ endereco: String
++ curso ArrayList(Cursos)
+--
+
++ mostrarCursos()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>540</y>
+      <w>220</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Disciplina
+--
++ codigo: Int
++ nome: String
++ turmas: ArrayList(Turma)
+--
+
++ mostrarEmenta()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1060</x>
+      <y>300</y>
+      <w>210</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Coordenador
+--
++ matricula: Int
++ nome:String
++ CPF: Int
++ RG: Int
+--
+
++ definirDisciplinas()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>300</y>
+      <w>240</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Curso
+--
++ nome: String
++ disciplinas: ArrayList(Disciplinas)
+
+--
+
++ mostrarDisciplinas()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>580</x>
+      <y>360</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1= 1
+m2= *</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>430</y>
+      <w>40</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1= *
+m2= *</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>540</y>
+      <w>230</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Turma
+--
++ id: Int
++ estudantes: ArrayList(Estudante)
+--
+
++ mostrarAlunos()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>440</y>
+      <w>530</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1= *
+m2= *</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;50.0;500.0;50.0;500.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>570</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1= *
+m2= *</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>910</x>
+      <y>360</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>m1= 1
+m2= *</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1160</x>
+      <y>530</y>
+      <w>190</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Estudante
+--
++ nome: String
++ matricula: 
+--
+
++ selecinarDisciplinas()
++ matricularSemestre()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>570</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1= *
+m2= 3..10</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>670</y>
+      <w>640</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1= 1..4
+m2= *</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;610.0;50.0;610.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>240</y>
+      <w>600</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1= 1
+m2= *</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0;570.0;10.0;570.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>430</y>
+      <w>960</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1= 1
+m2= *</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;320.0;930.0;320.0;930.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>440</y>
+      <w>220</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1= *
+m2= *</panel_attributes>
+    <additional_attributes>10.0;120.0;120.0;120.0;120.0;70.0;190.0;70.0;190.0;10.0</additional_attributes>
+  </element>
+</diagram>

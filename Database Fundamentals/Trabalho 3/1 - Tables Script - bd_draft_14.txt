@@ -1,0 +1,91 @@
+-- TABLES SCRIPT - TRABALHO 3 FBD 2018.2 
+-- HARTUR ALCANTARA - CC
+
+CREATE SCHEMA bd_trab3
+    AUTHORIZATION postgres;
+	
+CREATE TABLE bd_trab3."Empregado" (
+	id INT PRIMARY KEY,
+	cpf TEXT, 
+	nome TEXT,
+	endereco TEXT,
+	sexo TEXT,
+	salario NUMERIC,
+	supervisor INT,
+	depto INT
+);
+
+CREATE TABLE bd_trab3."Departamento" (
+	id TEXT PRIMARY KEY,
+	nome TEXT,
+	id_supervisor INT
+);
+
+ALTER TABLE bd_trab3."Departamento"
+	ADD CONSTRAINT CHE_FUNCIONARIO
+			FOREIGN KEY (id_supervisor)
+			REFERENCES bd_draft15."Empregado"(supervisor)
+			ON DELETE SET NULL
+			ON UPDATE CASCADE
+			
+CREATE TABLE bd_trab3."Departamento_localizacao" (
+	id_departamento INT,
+	localizacao TEXT
+);
+
+ALTER TABLE bd_trab3."Departamento_localizacao"
+	ADD CONSTRAINT CHE_FUNCIONARIO
+			FOREIGN KEY (id_departamento)
+			REFERENCES bd_draft15."Departamento"(id)
+			ON DELETE SET NULL
+			ON UPDATE CASCADE
+
+CREATE TABLE bd_trab3."Projeto" (
+	id INT, 
+	nome TEXT, 
+	localizacao TEXT, 
+	id_departamento INT
+);
+
+ALTER TABLE bd_trab3."Projeto"
+	ADD CONSTRAINT CHE_FUNCIONARIO
+			FOREIGN KEY (id_departamento)
+			REFERENCES bd_draft15."Departamento"(id)
+			ON DELETE SET NULL
+			ON UPDATE CASCADE
+
+CREATE TABLE bd_trab3."Alocacao" (
+	id_projeto INT,
+	id_empregado INT, --chave estrangeira
+	numero_horas INT --chave estrangeira
+);	
+ALTER TABLE bd_trab3."Alocacao"
+	ADD CONSTRAINT CHE_FUNCIONARIO
+			FOREIGN KEY (id_projeto)
+			REFERENCES bd_draft15."Projeto"(id)
+			ON DELETE SET NULL
+			ON UPDATE CASCADE
+			
+ALTER TABLE bd_trab3."Alocacao"
+	ADD CONSTRAINT CHE_FUNCIONARIO
+			FOREIGN KEY (id_empregado)
+			REFERENCES bd_draft15."Empregado"(id)
+			ON DELETE SET NULL
+			ON UPDATE CASCADE	
+			
+CREATE TABLE bd_trab3."Dependente" (
+	id_empregado INT, 
+	nome TEXT, 
+	sexo TEXT, 
+	data_nascimento TEXT, 
+	parentesco TEXT
+);	
+
+			
+ALTER TABLE bd_trab3."Dependente"
+	ADD CONSTRAINT CHE_FUNCIONARIO
+			FOREIGN KEY (id_empregado)
+			REFERENCES bd_draft15."Empregado"(id)
+			ON DELETE SET NULL
+			ON UPDATE CASCADE
+	

@@ -1,0 +1,97 @@
+-- INSERT SCRIPT - TRABALHO 3 FBD 2018.2 
+-- HARTUR ALCANTARA - CC
+
+
+--INSERINDO OS EMPREGADOS
+INSERT INTO bd_trab3."Empregado"(	
+	id, cpf, nome, endereco, sexo, salario, supervisor, depto)
+	VALUES 
+	(1        , '00000000000', 'Paul Mcartney'   , 'Rua Madalena'     , 'M'        , 2000          , 3                   , 1                     ),
+	(2        , '11111111111', 'Jhon Lenon'      , 'Rua Benfica'      , 'M'        , 2500          , 3                   , 2                     ),
+	(3        , '22222222222', 'Brenda Lee'      , 'Rua Boa Vista'    , 'F'        , 8000          , 16                  , 3                     ),
+	(4        , '33333333333', 'George Harrison' , 'Rua do Sol'       , 'M'        , 2000          , 3                   , 4                     ),
+	(5        , '44444444444', 'Ozzy Osbourne'   , 'Rua da Aurora'    , 'M'        , 1800          , 9                   , 1                    ), 
+	(6        , '55555555555', 'Aretha Frankin'  , 'Rua da id_empregadoiz'    , 'F'        , 3000          , 9                   , 2          ),           
+	(7        , '66666666666', 'Bruce Dickinson' , 'Rua Solidade'     , 'M'        , 4000          , 9                   , 3                ),     
+	(8        , '77777777777', 'Dave Mustain'    , 'Rua Boa Viagem'   , 'M'        , 3500          , 9                   , 4              ),       
+	(9        , '88888888888', 'Janes Joplin'    , 'Rua Piedade'      , 'F'        , 9000          , 16                  , 1            ),         
+	(10       , '99999999999', 'Ronnie James Dio', 'Rua Miguel Rosa'  , 'M'        , 5000          , 12                  , 2     )     ,           
+	(11       , '11100011100', 'Grace Slick'     , 'Rua das Flores'   , 'F'        , 1200          , 12                  , 3    )     ,            
+	(12       , '11100011111', 'Ringo Star'      , 'Avenida Acacia 22', 'M'        , 7500          , 16                  , 4   )     ,             
+	(13       , '11100022222', 'Lemmy Kilmster'  , 'Rua Quinta'       , 'M'        , 6000          , 12                  , 1  )     ,              
+	(14       , '11100033333', 'Tina Turner'     , 'Rua Major Morais' , 'F'        , 5500          , 12                  , 2 )     ,               
+	(15       , '11100044444', 'James Hetfield'  , 'Rua Prof Aritides', 'M'        , 3200          , 16                  , 3)     ,                
+	(16       , '11100055555', 'João Silva'    , 'Rua de Cima'      , 'M'        , 500         , null                , 4 );
+
+
+--INSERINDO departamento
+INSERT INTO bd_trab3."Departamento"(	
+	id, nome, id_supervisor)
+	VALUES 
+	(1        , 'Pesquisa'     , 1           ), 
+	(2        , 'Agronomia'    , 2           ),
+	(3        , 'Construção'     , 3         ),
+	(4        , 'Recursos Humanos'      , 4  );
+
+--INSERINDO departamento_localizacoes
+INSERT INTO bd_trab3."Departamento_localizacao"(	
+	id_departamento, localizacao)
+	VALUES 
+	(1                    , 'São Paulo - SP'   ),
+	(2                    , 'Piracuruca - PI'  ) , 
+	(2                    , 'João Pessoa - PB'),
+	(3                    , 'Itapipoca - CE')   ,  
+	(4                    , 'Caruaru - PE' )     , 
+	(4                    , 'Marabá - PA');
+	
+--INSERINDO dependetes	
+INSERT INTO bd_trab3."Dependente"(	
+	id_empregado, nome, sexo, data_nascimento, parentesco)
+	VALUES
+		(3                  , 'Bruce Lee'    , 'M'        , 1950-02-10   , 'PAI'   ),         
+	(3                  , 'Brandon Lee'  , 'M'        , 1980-03-20   , 'FILHO'    )  ,   
+	(5                  , 'John Osbourne', 'M'        , 1955-04-30   , 'PAI'       )  ,   
+	(5                  , 'Mary Osbourne', 'F'        , 1958-01-22   , 'MAE'     )     ,  
+	(8                  , 'Linda Mustain', 'F'        , 1976-07-11   , 'MAE'    )       , 
+	(8                  , 'Roger Mustain', 'M'        , 1991-08-07   , 'IRMAO');
+
+
+--INSERINDO Projeto	
+INSERT INTO bd_trab3."Projeto"(	
+	id, nome,localizacao, id_departamento)
+	VALUES
+	(1        , 'Fear of the Dark' , 'Jericó - PB'     , 1           ),          
+	(2        , 'A Love Supreme'   , 'Piracuruca - PI' , 2          )  ,         
+	(3        , 'Texas Flood'      , 'Itapipoca - CE'  , 3         )    ,        
+	(4        , 'Master Of Puppets', 'Crato - CE'      , 1        )      ,       
+	(5        , 'Head Hunters'     , 'Picos - PI'      , 2       )        ,      
+	(6        , 'Paranoid'         , 'Natal - RN'      , 4  	);
+	
+--INSERINDO OS ALOCACOES
+INSERT INTO bd_trab3."Alocacao"(	
+	id_projeto, id_empregado, numero_horas)
+	VALUES 	(1                , 1                  , 10),              
+			(1                , 3                  , 10),
+			(1                , 5                  , 20),             
+			(1                , 7                  , 20),            
+			(2                , 9                  , 30),           
+			(2                , 11                 , 30),          
+			(2                , 13                 , 10),         
+			(2                , 15                 , 20),        
+			(3                , 12                 , 20),       
+			(3                , 14                 , 30),      
+			(3                , 16                 , 30),     
+			(4                , 8                  , 20),    
+			(4                , 10                 , 10),   
+			(5                , 1                  , 10),  
+			(5                , 2                  , 30), 
+			(5                , 3                  , 10),
+			(5                , 4                  , 30),
+			(5                , 6                  , 20),
+			(6                , 6                  , 10),
+			(6                , 9                  , 20),
+			(6                , 14                 , 30);
+			
+			
+			
+			
