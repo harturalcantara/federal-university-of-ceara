@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>80</y>
+      <w>210</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Jogos&gt;&gt;
+
+--
+ - copa :Estadio 
+--
+
+--
+
+- Responsibilidade de informar
+o numero de empartes 
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>470</x>
+      <y>350</y>
+      <w>210</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>
+&lt;&lt;Times&gt;&gt;
+
+--
+- name: String
+- point: Int
+
+--
+
+
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>230</y>
+      <w>50</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+fg=black
+bg=black
+  
+  1:n
+
+  
+  
+  1:1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>420</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=black
+1:1    possui     1:n
+</panel_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>350</y>
+      <w>210</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>
+&lt;&lt;Estadio&gt;&gt;
+
+--
+- T: int
+- N: int
+- estadio:List(ArrayList)&lt;Times&gt;
+
+--
+
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

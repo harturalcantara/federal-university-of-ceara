@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>704</x>
+      <y>154</y>
+      <w>231</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>SistemaVendasInformatica
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>594</y>
+      <w>231</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>ClienteCoorporativo
+--
+ - cnpj: Int
+ - email:String
+ - creditos: String
+ - limCreditos: String 
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>594</y>
+      <w>231</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>ClientePessoal
+--
+- CPF: Int
+- numCatao: Int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>319</x>
+      <y>341</y>
+      <w>231</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>Cliente
+--
+ - nome: String
+ - endereco: String
+ - codigo: Int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>418</x>
+      <y>462</y>
+      <w>176</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;140.0;80.0;140.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>231</x>
+      <y>462</y>
+      <w>220</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;180.0;80.0;10.0;80.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>418</x>
+      <y>176</y>
+      <w>308</w>
+      <h>187</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+&lt; gerencia</panel_attributes>
+    <additional_attributes>260.0;20.0;10.0;20.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1155</x>
+      <y>583</y>
+      <w>231</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>LinhasPedidos
+--
+ + produtos: ArrayList (Produtos)
+ + precoTotal: Double
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>341</y>
+      <w>231</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>Produtos
+--
+ + codigo: Int
+ + titulo: String
+ + descricao: String
+ + precoUni: Double
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>814</x>
+      <y>583</y>
+      <w>231</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>Pedidos
+--
+ + data: Data
+ + preco: Double
+ + numero: Int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1034</x>
+      <y>627</y>
+      <w>143</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1= 1
+m2= *</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>264</y>
+      <w>297</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;120.0;150.0;120.0;150.0;10.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>385</y>
+      <w>297</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0;150.0;110.0;250.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1265</x>
+      <y>429</y>
+      <w>231</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>ProdutoEletronicos
+--
+ + medidasFisicas: String
+ + fonteAlimentacao: String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1265</x>
+      <y>231</y>
+      <w>231</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>ProdSoftware
+--
++ versao: Int
++ requisitos: String
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>539</x>
+      <y>374</y>
+      <w>297</w>
+      <h>242</h>
+    </coordinates>
+    <panel_attributes>m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0;140.0;190.0;250.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>462</y>
+      <w>187</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1= *
+m2= 1</panel_attributes>
+    <additional_attributes>150.0;110.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
