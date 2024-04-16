@@ -1,0 +1,9 @@
+input {
+    width: 250px;
+    height: 36px;
+    background-position: 10px 50%;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    font-size: 16px;
+    border: 2px;
+}
