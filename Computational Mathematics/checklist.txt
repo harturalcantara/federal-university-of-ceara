@@ -1,0 +1,25 @@
+Interpolações:
+    Lagrange
+    Taylor
+Zeros de Funções:
+    Posição Falsa
+    Método de Newton
+    Híbrido (extra)
+Cálculo:
+    Integração:
+        Regra do Trapézio, simples e com subintervalos
+        Regra de Simpson, simples e com subintervalos
+        Gauss-Legendre, generalizada para um intervalo de integração qualquer
+    Derivação:
+        As diferenças centrais com erros O(h^2) e O(h^3)
+Álgebra Linear:
+    Resolução de sistemas triangulares (inferior e superior)
+    Eliminação Gaussiana, simples e com pivoteamento parcial
+    Decomposição A = LU (PA = LU)
+    Determinante e inversa a partir de A = LU
+Otimização:
+    Simplex (extra)
+    Cortes de Gomory-Chvátal (extra)
+    Branch and Bound (extra)
+Fluxo:
+    Ford-Fulkerson
