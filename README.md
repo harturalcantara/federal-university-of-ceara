@@ -1,37 +1,48 @@
-# federal-university-of-ceara
+# Universidade Federal do Ceará
 
-#### [english]
-All my university files from Federal University of Ceara.
+Este é o meu repositório que contém todos os meus arquivos relacionados aos cursos que fiz na Universidade Federal do Ceará (UFC) durante meu curso de Ciência da Computação.
 
-Semester 1
-   - Introduction to Computer Science
-   - Programming Fundamentals
-   - Computers Architecture
-   - Basic Mathematics
-   - Ethics, Law and Legislation
-   - Pre-Calculation
+## Disciplinas e Tecnologias
 
-Semester 2
-   - Struct Data
-   - Calculus 1
-   - Operational systems
-   - Object Oriented Programming
-   - Discrete Mathematics
+- Introduction to Computer Science
+- Programming Fundamentals
+- Computers Architecture
+- Basic Mathematics
+- Ethics, Law and Legislation
+- Pre-Calculation
+- Struct Data
+- Calculus 1
+- Operational systems
+- Object Oriented Programming
+- Discrete Mathematics
 
-Semester 3
-   - ...
+### Tecnologias
 
-Semester 4
-   - ...
+- Linguagens de Programação:
+  - Java
+  - Python
+  - C/C++
+  - JavaScript
+- Frameworks e Bibliotecas:
+  - Spring Boot
+  - Django
+  - React.js
+  - Node.js
+- Bancos de Dados:
+  - MySQL
+  - PostgreSQL
+  - MongoDB
+- Ferramentas de Desenvolvimento:
+  - Git
+  - Docker
+  - Visual Studio Code
+  - IntelliJ IDEA
+- Sistemas Operacionais:
+  - Linux
+  - Windows
+  - macOS
+- etc.
 
-Semester 5
-   - ...
+## About the content of the diciplines
 
-Semester 6
-   - ...
-
-Semester 7
-   - ...
-
-Semester 8
-   - ...
+Design and Analysis of Algorithms - This field of study focuses on the design, analysis, and implementation of efficient algorithms to solve various computational problems. It involves understanding the fundamental concepts of algorithm design, analyzing their correctness and efficiency, and applying them to solve real-world problems.
