@@ -2,7 +2,7 @@
 
 Este é o meu repositório que contém todos os meus arquivos relacionados aos cursos que fiz na Universidade Federal do Ceará (UFC) durante meu curso de Ciência da Computação.
 
-## Disciplinas e Tecnologias
+## Diciplines and Tecnologies
 
 - Introduction to Computer Science
 - Programming Fundamentals
