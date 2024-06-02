@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title> Cadastrar </title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="front/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/vue.js"></script>
+  <script src="js/vue-router.js"></script>
+  <script src="js/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div class="header">
+    <a href="index.html"><img src="front/img/GraphsGeek.png " alt="" height="170" width="200"> </a>
+    <a href="index.html" style="font-size: 95px; color: white; text-decoration:none;"> <b>GraphsGeek</b></a>
+  </div>
+
+  <div class="topnav">
+    <a class="active" href="index.html">Home</a>
+  </div>
+
+
+  <div class="estrutura est_cadastro">
+
+    <form id="form" name="form" action="" method="post">
+      <br>
+      <br>
+      <center for=""> <b style="font-size:50px">Preencha o formulário abaixo</b> </center> <br>
+
+      <div class="est_cadastro2">
+        <div id="app">
+
+          <div class="form-group">
+            <label for="username"> Defina seu nome de Usuário: </label>
+            <input name="nome" v-model="username" type="text" class="form-control" placeholder="Usuário..."
+              pattern="[a-zA-Z0-9]+" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password"> Defina sua Senha: </label>
+            <input v-model="password" type="password" class="form-control" minlength="5" placeholder="Senha..."
+              pattern="[a-zA-Z0-9]+" required>
+          </div>
+
+          <div class="form-group">
+            <label for="inputAddress">Defina seu email:</label>
+            <input v-model="email" type="text" class="form-control" id="cad" placeholder="Usuário..." required>
+            <td>
+              <div id="msgeu"></div>
+            </td>
+          </div>
+
+          <div class="form-group">
+            <label for="inputAddress">Nome completo:</label>
+            <input type="text" v-model="nomecompleto" class="form-control" id="cad" placeholder="Usuário..." required>
+            <td>
+              <div id="msgeu"></div>
+            </td>
+          </div>
+
+          <div class="form-group">
+            <label for="inputAddress">Endereço:</label>
+            <input v-model="endereco" type="text" class="form-control" id="inputAddress" placeholder="Rua:..., Bairro:..., Nº:..."
+              required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputCity">Cidade:</label>
+              <input v-model="cidade" type="text" class="form-control" id="inputCity" placeholder="Cidade..." required>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="inputCity">Estado:</label>
+              <input v-model="estado" type="text" class="form-control" id="inputCity" placeholder="Estado..." required>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="inputCity">País:</label>
+              <input v-model="pais" type="text" class="form-control" id="inputCity" placeholder="País..." required>
+            </div>
+          </div>
+
+          <a href="index.html"> <button class="button button2" type="button"> Cancelar </button> </a>
+          <button class="button button2" type="submit" @click="submit">Cadastrar</button>
+
+          <p style="color: red">{{teste}}</p>
+        </div> <!-- Fim app -->
+        <br><br><br>
+      </div>
+    </form>
+  </div>
+
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        url: "http://localhost:8080/rest_persistence/api/users",
+        username: null,
+        password: null,
+        nomecompleto: null,
+        email: null,
+        endereco: null,
+        cidade: null,
+        estado: null,
+        pais: null,
+        file: null,
+        teste: null
+      },
+      methods: {
+        submit() {
+          vm = this;
+          let formData = new FormData();
+          formData.append('image', this.file);
+          formData.append('username', this.username);
+          formData.append('password', this.password);
+          formData.append('nomecompleto', this.nomecompleto);
+          formData.append('email', this.email);
+          formData.append('endereco', this.endereco);
+          formData.append('cidade', this.cidade);
+          formData.append('estado', this.estado);
+          formData.append('pais', this.pais);
+          
+          axios.post(this.url,
+            formData,
+            {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            }
+          ).then(function (r) {
+            console.log(r.data);
+            window.location.replace("index.html");
+          }).catch(function (error) {
+            //vm.teste = "fasdfasdfasdf";
+            console.log("erro");
+            alert("Esse nome de usuário já existe por favor altere!");
+          });
+        },
+        validar() {
+          var nome = form.nome.value;
+          var email = form.email.value;
+          var senha = form.senha.value;
+          var rep_senha = form.rep_senha.value;
+
+          if (nome == "") {
+            alert('Preencha o campo com seu nome');
+            form1.nome.focus();
+            return false;
+          }
+
+          if (email == "") {
+            alert('Preencha o campo com seu email');
+            form1.email.focus();
+            return false;
+          }
+
+          if (senha == "") {
+            alert('Preencha o campo com sua senha');
+            form1.senha.focus();
+            return false;
+          }
+
+          if (rep_senha == "") {
+            alert('Repita sua senha');
+            form1.rep_senha.focus();
+            return false;
+          }
+
+          if (nome.length < 5) {
+            alert('Digite seu nome completo');
+            form1.nome.focus();
+            return false;
+          }
+
+          if (senha != rep_senha) {
+            alert('Senhas diferentes');
+            form1.senha.focus();
+            return false;
+          }
+        },
+        handleFileUpload() {
+          this.file = this.$refs.file.files[0];
+        }
+      }
+
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>

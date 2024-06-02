@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="front/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/vue-session.js"></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <a href="index.html"><img src="front/img/GraphsGeek.png " alt="" height="170" width="200"> </a>
+        <a href="index.html" style="font-size: 95px; color: white; text-decoration:none;"> <b>GraphsGeek</b></a>
+    </div>
+
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+    </div>
+    <div id="app">
+        <div class="estrutura est_cadastro">
+            <br>
+            <br>
+            <center for=""> <b style="font-size:50px">Atualizar Dados</b> </center> <br>
+            <div class=container>
+                <div v-if="flag">
+                    <div class="form-group">
+                        <label for="username">Username: </label>
+                        <input class="form-control" type="text" v-model="usuario.username" :value="usuario.username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password: </label>
+                        <input class="form-control" type="password" v-model="usuario.password"
+                            :value="usuario.password">
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                            <label for="password">Nome: </label>
+                            <input class="form-control" type="text" v-model="usuario.nomecompleto"
+                                :value="usuario.nomecompleto">
+                    </div>
+
+                    
+                    <div class="form-group">
+                            <label for="password">Email: </label>
+                            <input class="form-control" type="text" v-model="usuario.email"
+                                :value="usuario.email">
+                    </div>
+
+                    <div class="form-group">
+                            <label for="password">Endereço: </label>
+                            <input class="form-control" type="text" v-model="usuario.endereco"
+                                :value="usuario.endereco">
+                    </div>
+
+                    <div class="form-group">
+                            <label for="password">Cidade: </label>
+                            <input class="form-control" type="text" v-model="usuario.cidade"
+                                :value="usuario.cidade">
+                    </div>
+
+                    <div class="form-group">
+                            <label for="password">Estado: </label>
+                            <input class="form-control" type="text" v-model="usuario.estado"
+                                :value="usuario.estado">
+                    </div>
+
+                    <div class="form-group">
+                            <label for="password">Pais: </label>
+                            <input class="form-control" type="text" v-model="usuario.pais"
+                                :value="usuario.pais">
+                    </div>
+                    
+                    <button class="btn btn-primary" type="button" @click="submit">Atualizar Dados </button>
+                    <button class="btn btn-danger" type="button" @click="deleteUser">Excluir Conta</button>
+                </div>
+            </div>
+            <br>
+            <br>
+
+        </div>
+
+        <script>
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    url: "http://localhost:8080/rest_persistence/api/users",
+                    usuario: {},
+                    file: null,
+                    usuarios: [],
+                    flagSair: false,
+                    flagLogin: true,
+                    flag: false
+                },
+                created() {
+                    var currentUrl = window.location.href;
+                    var id = new URL(currentUrl).searchParams.get("id");
+
+                    if (this.$session.exists()) {
+                        this.flagSair = true;
+                        this.flagLogin = false;
+                    }
+                    vm = this;
+                    axios.get(this.url).then(function (r) {
+                        if (r.data.user.length > 1) {
+                            vm.usuarios = r.data.user;
+                        } else {
+                            vm.usuarios = r.data;
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+
+                    vm = this;
+                    axios.get(this.url + "/" + id).then(function (r) {
+                        vm.usuario = r.data;
+                        console.log(vm.usuario);
+                        vm.flag = true;
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                },
+                methods: {
+                    submit() {
+                        let formData = new FormData();
+                        formData.append('image', this.file);
+                        formData.append('username', this.usuario.username);
+                        formData.append('password', this.usuario.password);
+                        formData.append('nomecompleto', this.usuario.email);
+                        formData.append('email', this.usuario.nomecompleto);
+                        formData.append('endereco', this.usuario.endereco);
+                        formData.append('cidade', this.usuario.cidade);
+                        formData.append('estado', this.usuario.estado);
+                        formData.append('pais', this.usuario.pais);
+
+
+
+                        axios.put(this.url + "/" + this.usuario.id,
+                            formData,
+                            {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data'
+                                }
+                            }
+                        ).then(function (r) {
+                            console.log(r.data);
+                            window.location.replace("index.html");
+                        }).catch(function (error) {
+                            console.log(erro);
+                        });
+                    },
+                    handleFileUpload() {
+                        this.file = this.$refs.file.files[0];
+                    },
+                    deleteUser() {
+                        this.$session.destroy()
+
+                        axios.delete(this.url + "/" + this.usuario.id).then(function (r) {
+                            console.log(r);
+                            window.location.replace('index.html')
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    },
+                    logout() {
+                        this.$session.destroy()
+                        this.flagSair = false;
+                        this.flagLogin = true;
+                    }
+                }
+            });
+        </script>
+</body>
+
+</html>

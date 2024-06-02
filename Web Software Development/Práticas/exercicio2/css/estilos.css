@@ -1,0 +1,94 @@
+h1,h2,h3,h4 {
+    background-color : lightgreen;
+    color: green;
+}
+a {
+    color: green;
+}
+
+html, body {
+    font-family: sans-serif;
+}
+
+body {
+    max-width: 70em;
+    margin: 2em auto;
+}
+
+main {
+    text-align: center;
+    font-size: 8em;
+}
+
+.container{
+    height: 80vh;
+    background: #EEE;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+th {
+    border: 1px solid #dddddd;
+    background-color: #626262;
+    text-align: left;
+    padding: 8px;
+}
+
+td {
+border: 1px solid #dddddd;
+
+text-align: left;
+padding: 8px;
+}
+
+tr:nth-child(even) {
+background-color: #dddddd;
+
+}
+
+input[type=text], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+input[type=submit] {
+width: 10%;
+background-color: green;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+border-radius: 0px;
+cursor: pointer;
+}
+
+input[type=submit]:hover {
+background-color: #45a049;
+}
+
+div {
+border-radius: 5px;
+background-color: #f2f2f2;
+padding: 20px;
+}
+
+textarea {
+width: 100%;
+height: 150px;
+padding: 12px 20px;
+box-sizing: border-box;
+border: 2px solid #ccc;
+border-radius: 4px;
+background-color: #f8f8f8;
+font-size: 16px;
+resize: none;
+}

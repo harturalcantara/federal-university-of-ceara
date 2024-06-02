@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cometario</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="front/css/estilos.css">
+    <link rel="stylesheet" href="front/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="front/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="front/assets/css/bootstrap.min.css">
+    
+    
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <script src="js/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <a href="index.html"><img src="front/img/GraphsGeek.png" alt="" height="170" width="200"> </a>
+        <a href="index.html" class="logo" style="font-size: 70px;">GraphsGeek</a>
+
+        <div class="header-right">
+            <a href="perfil.html"> <button class="button button1" formaction="Perfil.html" type="submit"> Perfil
+                </button> </a>
+            <a href="index.html"> <button class="button button1" formaction="Perfil.html" type="submit"> Sair </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="catAnimes.html" class="nav-link">Animes</a></li>
+        <a href="catSeries.html" class="nav-link">Séries</a>
+        <a href="catFilmes.html" class="nav-link">Filmes</a>
+        <a href="catGames.html" class="nav-link">Games</a></li>
+        <a href="catModaGeek.html" class="nav-link">Moda Geek</a></li>
+        <a href="catNoticias.html" class="nav-link">Noticias</a></li>
+        <a href="catTecnologias.html" class="nav-link">Tecnologias</a></li>
+
+        <div class="search-container">
+            <form action="/action_page.php">
+
+                <input type="text" placeholder="Pesquisar assunto.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="estrutura">
+        <div class=container>
+            <div id="app">
+                <h3>comentario</h3>
+                <div v-if="flag">
+                    <p>id do comentario: {{comfilme.id}}</p>
+                    <p>id autor: {{comfilme.idautor}}</p>
+                    <p>id topico: {{comfilme.idtopico}}</p>
+                    <p>texto: {{comfilme.texto}}</p>
+                    <img :src="'uploads/'+comfilme.id+'?'+new Date().getTime()" width="200" height="200"><br>
+
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+
+
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                url: "http://localhost:8080/rest_persistence/api/comfilmes",
+                comfilme: {},
+                flag: false,
+            },
+            created() {
+                var currentUrl = window.location.href;
+                var id = new URL(currentUrl).searchParams.get("id");
+                vm = this;
+                axios.get(this.url + "/" + id).then(function (r) {
+                    vm.comfilme = r.data;
+                    vm.flag = true;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
+            methods: {
+                deleteUser() {
+                    axios.delete(this.url + "/" + this.comfilme.id).then(function (r) {
+                        console.log(r);
+                        window.location.replace('index.html')
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

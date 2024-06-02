@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Postagem </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilos2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/vue-session.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <a href="index.html"><img src="front/img/GraphsGeek.png" alt="" height="170" width="200"> </a>
+        <div class="header-right">
+            <a href="perfil.html"> <button class="button button1" formaction="Perfil.html" type="submit"> Perfil
+                </button> </a>
+            <a href="index.html"> <button class="button button1" formaction="Perfil.html" type="submit"> Sair </button>
+            </a>
+        </div>
+        <a href="index.html" style="font-size: 95px; color: white; text-decoration:none;"> <b>GraphsGeek</b></a>
+    </div>
+
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="catAnimes.html" class="nav-link">Animes</a></li>
+        <a href="catSeries.html" class="nav-link">Séries</a>
+        <a href="catFilmes.html" class="nav-link">Filmes</a>
+        <a href="catGames.html" class="nav-link">Games</a></li>
+        <a href="catModaGeek.html" class="nav-link">Moda Geek</a></li>
+        <a href="catNoticias.html" class="nav-link">Noticias</a></li>
+        <a href="catTecnologias.html" class="nav-link">Tecnologias</a></li>
+
+        <div class="search-container">
+            <form action="/action_page.php">
+
+                <input type="text" placeholder="Pesquisar assunto.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="estrutura">
+        <div id="app">
+            <div class="container">
+                <div v-if="flag">
+                    <br>
+                    <h1> <b> Postagem </b></h1>
+                    <hr>
+                    <img :src="'uploads/'+postfilme.id+'?'+new Date().getTime()" width="100%"><br>
+                    <div
+                        style="border: 2px solid rgb(129, 129, 129); border-radius: 5px; padding-left: 5px; padding-right: 5px;">
+                        <br>
+                        <h3> <b>Identificação do autor: </b> #{{postfilme.idautor}} </h3>
+                        <h3> <b>Assunto: </b> {{postfilme.topico}} </h3>
+                        <h3> <b>Descrição:</b> {{postfilme.descricao}} </h3>
+                    </div>
+                </div>
+
+                <!-- 
+                <img src="front/img/top2.jpg" style="width:100%;">
+                <div
+                    style="border: 2px solid rgb(129, 129, 129); border-radius: 5px; padding-left: 5px; padding-right: 5px;">
+                    
+                    <p> Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu
+                        recteque
+                        expetendis neglegentur. Ca mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
+                   
+                </div> 
+                <div v-if="flag">
+                    <p>id da postagem: {{postfilme.id}}</p>
+                    <p>id autor: {{postfilme.idautor}}</p>
+                    <p>topico: </p>
+                    <p>descricao: </p>
+                    <p>id categoria: {{postfilme.idcategoria}}</p>
+                    <img :src="'uploads/'+postfilme.id+'?'+new Date().getTime()" width="100%"><br>
+                </div>
+                -->
+                <br>
+                <h3>Comentários de usuários sobre esse tópico:</h3>
+            </div>
+            <br>
+
+            <div class="divScroll">
+                <div v-for="com in comfilmes">
+                    <div v-if="com.idtopico == postfilme.id">
+                        <div class="mini_divScroll_eff">
+
+
+                            <div id="mini_divScroll">
+                                <!--  
+                            <a :href="'comFilmes-view.html?id='+com.id"> id_comentario: {{com.id}} </a> <br>
+                            <a :href="'comFilmes-view.html?id='+com.id"> id_autor: {{com.idautor}} </a> <br>
+                            <a :href="'comFilmes-view.html?id='+com.id"> id_topico: {{com.idtopico}} </a> <br>-->
+                            <br>
+                            
+                            
+                            <h4 style="margin-left: 20px"> 
+                                    <b>Identificação do Autor:</b><a :href="'user-view.html?id='+com.idautor">
+                                            #{{com.idautor}}</a> (Clique
+                                        para
+                                        ver
+                                        o perfil) <br>
+                                <b> Comentário:</b> {{com.texto}}  </h4>  </p>
+                                    <br>
+                                    <br>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <hr>
+
+
+        <div id="app2">
+            <div class="slideshow-containerr">
+                <div>
+                    <h3>Faça seu comentário também:</h3>
+                    <!-- 
+
+                                
+                                <div class="form-group">
+                                    <label for="idautor">id_autor: </label>
+                                    <input class="form-control" type="text" v-model="idautor">
+                                </div>
+            
+                                <div class="form-group">
+                                    <label for="idtopico">id_topico </label>
+                                    <input class="form-control" type="text" v-model="idtopico">
+                                </div> -->
+
+                    <div class="form-group">
+                        <label for="texto"> Digite o seu comentário:</label>
+                        <textarea name="" id="" cols="30" rows="10" v-model="texto"></textarea>
+
+                    </div>
+                    <button class="button button2" type="button" @click="submit">Enviar</button>
+                    <button class="button button2" type="button" @click="limpar">Limpar</button>
+
+                    <br><br><br>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+            <div class="centered clearfix">
+                <div class="footer-logo">
+    
+                    <a href="index.html"> <img class="logo" src="front/img/GraphsGeek.png"
+                            style="height: 150px; width: 170px; margin-left: 35px; "> </a>
+    
+    
+                    <div class="social">
+                        <a href="https://www.facebook.com/" class="facebook">
+                            <svg viewBox="0 0 33 33">
+                                <g>
+                                    <path
+                                        d="M 17.996,32L 12,32 L 12,16 l-4,0 l0-5.514 l 4-0.002l-0.006-3.248C 11.993,2.737, 13.213,0, 18.512,0l 4.412,0 l0,5.515 l-2.757,0 c-2.063,0-2.163,0.77-2.163,2.209l-0.008,2.76l 4.959,0 l-0.585,5.514L 18,16L 17.996,32z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/" class="twitter">
+                            <svg viewBox="0 0 33 33">
+                                <g>
+                                    <path
+                                        d="M 32,6.076c-1.177,0.522-2.443,0.875-3.771,1.034c 1.355-0.813, 2.396-2.099, 2.887-3.632 c-1.269,0.752-2.674,1.299-4.169,1.593c-1.198-1.276-2.904-2.073-4.792-2.073c-3.626,0-6.565,2.939-6.565,6.565 c0,0.515, 0.058,1.016, 0.17,1.496c-5.456-0.274-10.294-2.888-13.532-6.86c-0.565,0.97-0.889,2.097-0.889,3.301 c0,2.278, 1.159,4.287, 2.921,5.465c-1.076-0.034-2.088-0.329-2.974-0.821c-0.001,0.027-0.001,0.055-0.001,0.083 c0,3.181, 2.263,5.834, 5.266,6.438c-0.551,0.15-1.131,0.23-1.73,0.23c-0.423,0-0.834-0.041-1.235-0.118 c 0.836,2.608, 3.26,4.506, 6.133,4.559c-2.247,1.761-5.078,2.81-8.154,2.81c-0.53,0-1.052-0.031-1.566-0.092 c 2.905,1.863, 6.356,2.95, 10.064,2.95c 12.076,0, 18.679-10.004, 18.679-18.68c0-0.285-0.006-0.568-0.019-0.849 C 30.007,8.548, 31.12,7.392, 32,6.076z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/" class="linkedin">
+                            <svg viewBox="0 0 512 512">
+                                <g>
+                                    <path
+                                        d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+    
+                <div class="footer-contact" >
+                    <h3><a href="">GraphsGeek</a></h3>
+                
+                    <p><a href="">Conectando o mundo!</a></p>
+                    
+                   
+                </div>
+    
+                <div class="footer-navigation">
+                    <div class="footer-links-holder">
+                        
+                        <ul class="footer-links">
+                                <h3><a href="">Endereço</a></h3>
+                                <p><a href="mailto:">graphsgeek@email.com</a></p>
+                                <p><a href="tel:">+55-(88)9890-1022</a></p>
+                                <p><a href="">286 Fake St<br />Fake, PA 11111</a></p>
+                            
+                        </ul>
+                    </div>
+    
+                    <div class="footer-links-holder">
+                        <h3><a href="">Sobre-nos</a></h3>
+                        <ul class="footer-links">
+                            <li><a href="">Desenvolvedores</a></li>
+                            <li><a href="">Futuros projetos</a></li>                       
+                        </ul>
+                    </div>
+    
+                    <div class="footer-links-holder">
+                        <h3><a href="">Acompanhe-nos</a></h3>
+                        <ul class="footer-links">
+                            <li><a href="">facebook/graphsgeek.com</a></li>
+                            <li><a href="">instagram/graphsgeek.com</a></li>
+                            <li><a href="">youtube/graphsgeek.com</a></li>
+                            
+                        </ul>
+                    </div>
+    
+                </div>
+            </div>
+            <div class="bottom-bar">
+                All Rights Reserved © 2016 | <a href="">Privacy Policy</a> | <a href="">Terms of Service</a>
+            </div>
+        </footer>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                url: "http://localhost:8080/rest_persistence/api/postfilmes",
+                postfilme: {},
+                flag: false,
+                url3: "http://localhost:8080/rest_persistence/api/comfilmes",
+                comfilmes: [],
+            },
+            created() {
+                var currentUrl = window.location.href;
+                var id = new URL(currentUrl).searchParams.get("id");
+                //var idautor = session
+                vm = this;
+                axios.get(this.url + "/" + id).then(function (r) {
+                    vm.postfilme = r.data;
+                    vm.flag = true;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+                vm = this;
+                axios.get(this.url3).then(function (r) {
+                    if (r.data.comfilme.length > 1) {
+                        vm.comfilmes = r.data.comfilme;
+                    } else {
+                        vm.comfilmes = r.data;
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+
+            },
+            methods: {
+                deleteUser() {
+                    axios.delete(this.url + "/" + this.postfilme.id).then(function (r) {
+                        console.log(r);
+                        window.location.replace('index.html')
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                }
+            }
+        });
+
+        var app2 = new Vue({
+            el: "#app2",
+            data: {
+                url: "http://localhost:8080/rest_persistence/api/comfilmes",
+                idautor: null,
+                idtopico: null,
+                texto: null,
+                file: null
+            },
+            created() {
+                var currentUrl = window.location.href;
+                var id = new URL(currentUrl).searchParams.get("id");
+                this.idtopico = id;
+                console.log(this.idtopico);
+
+                var id2 = this.$session.get("id");
+                this.idautor = id2;
+                console.log(this.idautor);
+            },
+            methods: {
+                submit() {
+                    let formData = new FormData();
+                    formData.append('image', this.file);
+                    formData.append('idautor', this.idautor);
+                    formData.append('idtopico', this.idtopico);
+                    formData.append('texto', this.texto);
+                    axios.post(this.url,
+                        formData,
+                        {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        }
+                    ).then(function (r) {
+                        console.log(r.data);
+                        //window.location.replace("catGames.html");
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                },
+                handleFileUpload() {
+                    this.file = this.$refs.file.files[0];
+                },
+                limpar(){
+                    this.texto = null;
+                }
+            }
+        });
+
+        var app3 = new Vue({
+            el: '#app3',
+            data() {
+                return {
+                    alert: true
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

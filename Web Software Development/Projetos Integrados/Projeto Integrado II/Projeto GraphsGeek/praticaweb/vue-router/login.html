@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Logar</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilos2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <script src="js/vue-session.js"></script>
+    <script src="js/axios.min.js"></script>
+
+
+    <style>
+        /* Style all input fields */
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+        }
+
+        /* Style the submit button */
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Style the container for inputs */
+        .container {
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        /* The message box is shown when the user clicks on the password field */
+        #message {
+            display: none;
+            background: #f1f1f1;
+            color: #000;
+            position: relative;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        #message p {
+            padding: 10px 35px;
+            font-size: 18px;
+        }
+
+        /* Add a green text color and a checkmark when the requirements are right */
+        .valid {
+            color: green;
+        }
+
+        .valid:before {
+            position: relative;
+            left: -35px;
+            content: "✔";
+        }
+
+        /* Add a red text color and an "x" when the requirements are wrong */
+        .invalid {
+            color: red;
+        }
+
+        .invalid:before {
+            position: relative;
+            left: -35px;
+            content: "✖";
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="index.html"><img src="front/img/GraphsGeek.png " alt="" height="170" width="200"> </a>
+        <a href="index.html" style="font-size: 95px; color: white; text-decoration:none;"> <b>GraphsGeek</b></a>
+    </div>
+
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+    </div>
+
+
+    <div class="estrutura">
+        <div class="slideshow-containerr">
+            <center> <img src="front/img/person_icon.png" alt="Avatar" class="avatar" height="200px"> </center>
+            <div id="app">                 
+                <label for="">Usuário:</label>
+                <input class="form-control" type="text" v-model="username"><br>
+                <label for="">Senha:</label>
+                <input class="form-control" type="password" v-model="password"><br><br>
+
+                <a href="index.html"> <button class="button button2" type="button">Cancel</button> </a>
+                <button class="button button2" type="button" @click="submit">Logar</button><br>
+                <p style="color: red">{{error}}</p>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                url: "http://localhost:8080/rest_persistence/login",
+                username: null,
+                password: null,
+                error: null
+            },
+            created() {
+
+            },
+            methods: {
+                submit() {
+                    vm = this;
+                    axios.defaults.withCredentials = true;
+                    axios.post(this.url, {
+                        username: vm.username,
+                        password: vm.password
+                    }).then(function (r) {
+                        if (r.status == 200) {
+                            console.log(r.data);
+                            vm.$session.start();
+                            vm.$session.set("id", r.data);
+
+                            var idd = vm.$session.get("id"); //qualquer lugar
+                            console.log(idd);
+
+                            window.location.replace("index.html");
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                        //alert("Não foi possível logar! Confira seu nome de usuário e senha!");
+                        vm.error = "Não foi possível logar!, confira seu nome de usuário e senha!";
+                    });
+                }
+            }
+        });
+
+
+        var myInput = document.getElementById("psw");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function () {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function () {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function () {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        }
+    </script>
+
+
+
+</body>
+
+</html>
