@@ -1,6 +1,6 @@
 # Universidade Federal do Ceará
 
-Este é o meu repositório que contém todos os meus arquivos relacionados aos cursos que fiz na Universidade Federal do Ceará (UFC) durante meu curso de Ciência da Computação.
+Este repositório contém todos os meus arquivos relacionados aos cursos que fiz na Universidade Federal do Ceara durante meu curso de Ciência da Computação.
 
 ## Diciplines and Tecnologies
 
