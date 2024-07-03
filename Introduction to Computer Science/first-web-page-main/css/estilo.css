@@ -1,0 +1,43 @@
+input.botao{
+	display: inline-block;
+}
+label, input{
+	display: block;
+}
+select{
+	display: block;
+}
+input.radio{
+	display: inline-block;
+}
+input.checkbox{
+	display: inline-block;
+}
+textarea{
+	display: block;
+	margin-bottom: 15px;
+	padding: 5px 2%;
+	width: 420px;
+	height: 150px;
+}
+label{
+	padding: 5px 0;
+}
+.avaliacao{
+	background-color: white;
+	float: right;
+	max-width: 600px; 
+	padding: 5px;
+	border: 1px solid gray;
+	margin: 0 35px;
+}
+
+.register{
+	background-color: white;
+	border: 1px solid gray;
+	max-width: 450px; 
+	padding: 10px;
+	margin: 0 220px;
+}
+
+

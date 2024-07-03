@@ -1,0 +1,77 @@
+body {
+	margin: 0;
+	background-image: url("fundo.jpg");
+	background-repeat: no-repeat;
+}
+
+
+	header {
+				background-color: #347EFF;
+			}
+
+	nav.menu ul {
+			background-color: #4682B4;
+			margin: 0;
+		    padding: center;
+		    overflow: hidden;
+			list-style-type: none;
+			border-top: 1px solid black;
+		}
+	nav.menu ul li {
+			float: left;
+			padding: 12px 12px;
+			border-left: 1px solid black;
+			border-right:1px solid black;
+			margin: 0 9px;
+			background-color: #347EFF;
+		}
+	nav.menu ul li a {
+			font-size: 13px;
+			display: block;
+			position: static;
+			font-family: verdana;
+			color: white;
+		}
+	nav.barra {
+		background-color: white;
+			float: left;
+		    max-width: 160px;
+		    margin: 0;
+		    padding: 1em;
+		    border: 1px solid gray;
+		    margin: 0 9px;
+
+		}
+	nav.barra h1 {
+			font-size: 100%;
+			text-align: center;
+		    
+		}
+
+	article {
+		background-color: white;
+			margin-left: 170px;
+		    border: 1px solid gray;
+		    padding: 1em;
+		    overflow: hidden;
+		    margin: 0 9px;
+		}
+	div.rodape{
+			background-color: #00BFFF;
+			padding: 20px;
+			margin: 12px 0;
+		}
+		div.rodape footer{
+			text-align: center;
+		}
+	iframe{
+		width: 450px;
+		height: 450px;
+		border: 0;
+	}
+
+	.video{
+
+		width: 600;
+		height: 400;
+	}

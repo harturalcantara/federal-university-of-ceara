@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Avalie</title>
+		
+
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+				<meta charset="utf-8">
+				<link rel="stylesheet" type="text/css" href="css/estilo.css">
+				<link rel="stylesheet" type="text/css" href="css/base.css">
+				<link rel="stylesheet" type="text/css" href="css/mobile.css">	
+
+</head>
+
+<body>
+<header>
+	<center><a href="index.html"><img src="img/rede_img.PNG" width: 600px height: 200px"></a></center>
+</header>
+<nav class="menu">
+	<ul>
+
+		<li><a href="index.html"><b>HOME</b></a></li>
+		<li><a href="primeiro_periodo.html"><b>PRIMEIRO PERIODO-(1960)</b></a></li>
+		<li><a href="segundo_periodo.html"><b>SEGUNDO PERIODO-(1972)</b></a></li>
+		<li><a href="terceiro_periodo.html"><b>TERCEIRO PERIODO-(1980)</b></a></li>
+		<li><a href="quarto_periodo.html"><b>QUARTO PERIODO-(1990)</b></a></li>
+	</ul>
+</nav>
+	<br>
+<nav class="barra">
+	<h1>Links relacionados</h1>
+	<ul >
+	<li><a href="index.html">Home</a></li>
+<br>
+ 	<li><a href="quem_somos.html">Quem somos</a></li>
+ <br>
+ 	<li><a href="meios.html">Meios de contato</a></li>
+ <br>
+ 	<li><a href="formulario_preenchimento.html">Opine Sobre o Site!</a></li>
+ 
+ 
+	 </ul>
+	 
+ </nav>
+
+		<!-- PRA DIVISAO DA COLUNA 2-->
+		<div class="conjunto">
+		<div class="avaliacao">
+			<form action="">
+				<h2>Avalie o site</h2>
+				<label for="email">Digite seu email:</label>
+				<input type="text" name="email" id="email" placeholder="Digite seu email" />
+				<!-- Select -->
+				<label id="situacao">Qual a situação do site?</label>
+				<select>
+					<option id="situacao" value="otimo">Ótimo</option>
+					<option id="situacao" value="bom">Bom</option>
+					<option id="situacao" value="razoavel">Razoável</option>
+					<option id="situacao" value="ruim">Ruim</option>
+					<option id="situacao" value="pessimo">Péssimo</option>
+				</select><!-- Fim do Select -->
+				<!-- Radio -->
+				<label for="informacao">Das informações:</label>
+				<input id="informacao" class="radio" type="radio" name="informacao" value="sim" />O site é informativo
+				<input id="informacao" class="radio" type="radio" name="informacao" value="nao" />O site não é informativo
+				<!-- Fim do Radio -->
+				<label for="estado">Marque abaixo o que você acha sobre o conteúdo e o design:</label>
+				<input id="estado" class="checkbox" type="checkbox" name="ctb">Está bom
+				<input id="estado" class="checkbox" class="checkbox" type="checkbox" name="ctm">Está ruim
+				<input id="estado" class="checkbox" type="checkbox" name="dsb">O design está bom
+				<input id="estado" class="checkbox" type="checkbox" name="dsm">O design está ruim
+				<input id="estado" class="checkbox" type="checkbox" name="vdb">O conteudo está bom
+				<input id="estado" class="checkbox" type="checkbox" name="dvm">O conteúdo está ruim
+
+				<label for="mensagem">Envie sua opinião ou sugestão:</label>
+				<textarea id="mensagem" name="mensagem" placeholder="Digite sua opinião"></textarea>
+				<input type="submit" class="botao" value="Enviar" />
+				<input type="reset" class="botao" value="Resetar" />
+			</form>
+		</div>
+
+		<!-- 1 Coluna dividida da outra--> 
+		
+		<div class="register">
+			<form action="">
+				<h2>Resgistre-se</h2>
+				<label for="nome">Digite seu nome:</label>
+				<input type="text" name="nome" id="nome" placeholder="Digite seu nome" />
+				<label for="email">Digite seu email:</label>
+				<input type="text" name="email" id="email" placeholder="Digite seu email" />
+				<label for="senha">Digite sua senha:</label>
+				<input type="password" name="senha" id="senha" placeholder="Digite sua senha" />
+				<label for="senha">Confirme sua senha:</label>
+				<input type="password" name="senha" id="senha" placeholder="Digite sua senha" />
+				<input type="submit" class="botao" name="regiter" value="Registrar"/>
+			</form>
+			<form>
+				<h2>Entrar</h2>
+				<label for="email">Digite seu email:</label>
+				<input type="text" name="email" id="email" placeholder="Digite seu email" />
+				<label for="senha">Digite sua senha:</label>
+				<input type="password" name="senha" id="senha" placeholder="Digite sua senha" />
+				<input type="submit" class="botao" name="login" value="Login"/>
+				<br>
+			</form>
+			</div>
+			</div>
+			<div class="rodape">
+	<footer>Copyright &copy; REDES.CC</footer>
+</div>
+		</body>
+</html>
