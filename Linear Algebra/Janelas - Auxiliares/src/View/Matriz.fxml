@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MatrizController">
+   <center>
+      <BorderPane prefHeight="950.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
+         <center>
+            <AnchorPane prefHeight="1222.0" prefWidth="1700.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="950.0" prefWidth="1700.0" style="-fx-background-color: darkGray;" stylesheets="@application.css">
+                     <children>
+                        <Text layoutX="287.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matriz A">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <AnchorPane layoutX="641.0" layoutY="255.0" prefHeight="406.0" prefWidth="403.0">
+                           <children>
+                              <Pane prefHeight="406.0" prefWidth="404.0">
+                                 <children>
+                                    <ScrollPane prefHeight="408.0" prefWidth="407.0">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="411.0">
+                                             <children>
+                                                <GridPane fx:id="paneB" layoutX="130.0" layoutY="114.0" prefHeight="110.0" prefWidth="134.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="130.0" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </ScrollPane>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                        <Text layoutX="775.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matriz B" textAlignment="CENTER" wrappingWidth="161.3131103515625">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <Button id="click" fx:id="btSomarMat" layoutX="556.0" layoutY="722.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="140.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="A+B">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button id="click" fx:id="btMultMat" layoutX="934.0" layoutY="722.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="A * B">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button id="click" fx:id="btSubMat" layoutX="773.0" layoutY="723.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="A - B">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <AnchorPane layoutX="1244.0" layoutY="251.0" prefHeight="406.0" prefWidth="385.0">
+                           <children>
+                              <Pane prefHeight="418.0" prefWidth="414.0">
+                                 <children>
+                                    <AnchorPane layoutX="5.0" layoutY="6.0" prefHeight="406.0" prefWidth="403.0">
+                                       <children>
+                                          <Pane prefHeight="406.0" prefWidth="404.0">
+                                             <children>
+                                                <ScrollPane prefHeight="408.0" prefWidth="407.0">
+                                                   <content>
+                                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="407.0" prefWidth="405.0">
+                                                         <children>
+                                                            <GridPane fx:id="paneC" layoutX="130.0" layoutY="114.0" prefHeight="110.0" prefWidth="134.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="130.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                        <Text layoutX="1373.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado" textAlignment="CENTER" wrappingWidth="189.8372802734375">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="txLinhaA" layoutX="150.0" layoutY="716.0" onAction="#inicializar" prefHeight="25.0" prefWidth="240.0" promptText="Digite o número de linhas..." />
+                        <TextField fx:id="txColunaA" layoutX="150.0" layoutY="749.0" prefHeight="25.0" prefWidth="240.0" promptText="Digite o número de colunas..." />
+                        <Button id="click" fx:id="btSetA" layoutX="150.0" layoutY="786.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="Definir Matriz A">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <TextField fx:id="txLinhaB" layoutX="150.0" layoutY="823.0" prefHeight="25.0" prefWidth="240.0" promptText="Digite o número de linhas..." />
+                        <TextField fx:id="txColunaB" layoutX="150.0" layoutY="855.0" prefHeight="25.0" prefWidth="240.0" promptText="Digite o número de colunas..." />
+                        <Button id="click" fx:id="btSetB" layoutX="150.0" layoutY="887.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="Definir Matriz B">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <Pane prefHeight="100.0" prefWidth="1700.0" style="-fx-background-color: black;">
+                           <children>
+                              <Label layoutX="633.0" layoutY="4.0" prefHeight="93.0" prefWidth="606.0" text="Linear Algebra - Matrizes" textAlignment="CENTER" textFill="#f5f5f5">
+                                 <font>
+                                    <Font name="System Bold" size="48.0" />
+                                 </font>
+                              </Label>
+                              <Button id="click" fx:id="btVolta" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="120.0" styleClass="click" text="&lt;- Voltar" textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font></Button>
+                           </children>
+                        </Pane>
+                        <AnchorPane layoutX="150.0" layoutY="255.0" prefHeight="391.0" prefWidth="405.0">
+                           <children>
+                              <Pane prefHeight="401.0" prefWidth="406.0">
+                                 <children>
+                                    <ScrollPane prefHeight="411.0" prefWidth="407.0">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="406.0">
+                                             <children>
+                                                <GridPane fx:id="paneA" layoutX="133.0" layoutY="127.0" prefHeight="110.0" prefWidth="134.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="130.0" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </ScrollPane>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                        <Button id="click" fx:id="btIdentidade" layoutX="1004.0" layoutY="867.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="Identidade" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="txMultEscalar" layoutX="856.0" layoutY="821.0" prefHeight="30.0" prefWidth="130.0" promptText="Digite o escalar..." />
+                        <Button id="click" fx:id="btMultEscalar" layoutX="711.0" layoutY="816.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: Gold;" styleClass="click" text="Mult. Escalar ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <TextField fx:id="txPotencia" layoutX="856.0" layoutY="866.0" prefHeight="30.0" prefWidth="130.0" promptText="Digite o expoente..." />
+                        <Button id="click" fx:id="btPotenciaMat" layoutX="711.0" layoutY="867.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="Potência">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <Button id="click" fx:id="btTranpostaMat" layoutX="556.0" layoutY="867.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="Trasposta">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <Button id="click" fx:id="btDetMat" layoutX="1004.0" layoutY="816.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="Det(A)">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <Button id="click" fx:id="btAdj" layoutX="1156.0" layoutY="867.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="Matriz Adjunta">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <Button id="click" fx:id="btCofatora" layoutX="1156.0" layoutY="816.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="Matriz Cofatora">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <Button id="click" fx:id="btInversaMat" layoutX="556.0" layoutY="816.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: Gold;" styleClass="click" stylesheets="@application.css" text="Inversa">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <Text layoutX="150.0" layoutY="706.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Defina os tamanhos" wrappingWidth="305.59375">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="556.0" layoutY="709.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Escolha a operação referente a matrizes A e B" wrappingWidth="541.59375">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="556.0" layoutY="800.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2.1 - Escolha a operação referente a matriz A" wrappingWidth="541.59375">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="1073.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" text="=" textAlignment="CENTER" wrappingWidth="165.8372802734375">
+                           <font>
+                              <Font name="System Bold" size="96.0" />
+                           </font>
+                        </Text>
+                        <GridPane fx:id="paneDet" layoutX="1252.0" layoutY="669.0" prefHeight="41.0" prefWidth="216.0">
+                           <columnConstraints>
+                              <ColumnConstraints />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints />
+                           </rowConstraints></GridPane>
+                        <TextField layoutX="1251.0" layoutY="677.0" prefHeight="25.0" prefWidth="217.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </center>
+</BorderPane>

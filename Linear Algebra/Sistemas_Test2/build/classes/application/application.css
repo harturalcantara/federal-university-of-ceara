@@ -1,0 +1,13 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.click:hover{
+	-fx-border-color: #00FFFF;
+	-fx-padding: 0.6em 0.6em;
+	-fx-background-color:#00FFFF;
+	
+	
+	
+	
+           
+	
+	
+}

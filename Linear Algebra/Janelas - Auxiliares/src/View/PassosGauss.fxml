@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PassosGaussController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="-1.0" layoutY="-3.0" prefHeight="650.0" prefWidth="1200.0" style="-fx-background-color: Gray;" stylesheets="@application.css">
+               <children>
+                  <AnchorPane layoutX="425.0" layoutY="206.0" prefHeight="390.0" prefWidth="400.0">
+                     <children>
+                        <Pane prefHeight="390.0" prefWidth="400.0">
+                           <children>
+                              <ScrollPane prefHeight="390.0" prefWidth="400.0">
+                                 <content>
+                                    <AnchorPane layoutY="200.0" minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="400.0">
+                                       <children>
+                                          <GridPane fx:id="paneA" layoutX="130.0" layoutY="111.0" prefHeight="169.0" prefWidth="140.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="111.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+                  <Pane prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: black;">
+                     <children>
+                        <Label layoutX="242.0" layoutY="4.0" prefHeight="93.0" prefWidth="717.0" text="Linear Algebra - Passos Gauss/GaussJodan" textAlignment="CENTER" textFill="#f5f5f5">
+                           <font>
+                              <Font name="System Bold" size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Label layoutX="540.0" layoutY="123.0" prefHeight="62.0" prefWidth="170.0" text="Passos...">
+                     <font>
+                        <Font name="System Bold" size="42.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
