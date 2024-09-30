@@ -1,48 +1,46 @@
-# Universidade Federal do Ceará
+# Federal University of Ceara
 
-Este repositório contém todos os meus arquivos relacionados aos cursos que fiz na Universidade Federal do Ceara durante meu curso de Ciência da Computação.
+This repository contains all my files related to the courses I took at the Federal University of Ceará during my Computer Science degree.
 
-## Diciplines and Tecnologies
+## Disciplines and Technologies
 
 - Introduction to Computer Science
 - Programming Fundamentals
-- Computers Architecture
+- Computer Architecture
 - Basic Mathematics
-- Ethics, Law and Legislation
-- Pre-Calculation
-- Struct Data
+- Ethics, Law, and Legislation
+- Pre-Calculus
+- Data Structures
 - Calculus 1
-- Operational systems
-- Object Oriented Programming
+- Operating Systems
+- Object-Oriented Programming
 - Discrete Mathematics
 
-### Tecnologias
+### Technologies
 
-- Linguagens de Programação:
-  - Java
-  - Python
-  - C/C++
-  - JavaScript
-- Frameworks e Bibliotecas:
-  - Spring Boot
-  - Django
-  - React.js
-  - Node.js
-- Bancos de Dados:
-  - MySQL
-  - PostgreSQL
-  - MongoDB
-- Ferramentas de Desenvolvimento:
-  - Git
-  - Docker
-  - Visual Studio Code
-  - IntelliJ IDEA
-- Sistemas Operacionais:
-  - Linux
-  - Windows
-  - macOS
-- etc.
+Programming Languages:
+- Java
+- Python
+- C/C++
+- JavaScript
 
-## About the content of the diciplines
+Frameworks and Libraries:
+- Spring Boot
+- Django
+- React.js
+- Node.js
 
-Design and Analysis of Algorithms - This field of study focuses on the design, analysis, and implementation of efficient algorithms to solve various computational problems. It involves understanding the fundamental concepts of algorithm design, analyzing their correctness and efficiency, and applying them to solve real-world problems.
+Databases:
+- MySQL
+- PostgreSQL
+- MongoDB
+
+Development Tools:
+- Git
+- Docker
+- Visual Studio Code
+- IntelliJ IDEA
+
+## About the Content of the Disciplines
+
+Design and Analysis of Algorithms: This field of study focuses on the design, analysis, and implementation of efficient algorithms to solve various computational problems. It involves understanding the fundamental concepts of algorithm design, analyzing their correctness and efficiency, and applying them to solve real-world problems.
